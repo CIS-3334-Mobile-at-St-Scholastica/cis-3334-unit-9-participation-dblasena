@@ -126,7 +126,34 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_add) {
+            Toast.makeText(getApplicationContext(), "Adding study mates is not available yet.", Toast.LENGTH_LONG)
+                    .show();
+
+        } else if (id == R.id.nav_delete) {
+            Toast.makeText(getApplicationContext(), "Deleting a study mate is not available yet.", Toast.LENGTH_LONG)
+                    .show();
+
+        } else if (id == R.id.nav_email) {
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+            intent.putExtra(Intent.EXTRA_EMAIL, "");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "");
+
+            startActivity(intent);
+
+        } else if (id == R.id.nav_SMS) {
+            Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+            sendIntent.setData(Uri.parse("sms:" + ""));
+            sendIntent.putExtra("sms_body", "");
+            startActivity(sendIntent);
+
+        } else if (id == R.id.nav_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
